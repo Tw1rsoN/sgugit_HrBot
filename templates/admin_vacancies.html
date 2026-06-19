@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>СГУГиТ HR — Вакансии</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='admin_vacancies.css') }}">
+</head>
+
+<body class="bg">
+  <div class="bg-blobs">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <header class="top glass">
+    <div class="left">
+      <div class="title">СГУГиТ HR</div>
+      <div class="subtitle">Вакансии ВУЗа и отклики студентов</div>
+    </div>
+
+    <div class="right">
+      <div class="stats">
+        <div class="stat">
+          <div class="k">Вакансий</div>
+          <div class="v" id="stVac">—</div>
+        </div>
+        <div class="stat">
+          <div class="k">Откликов</div>
+          <div class="v" id="stApps">—</div>
+        </div>
+      </div>
+
+      <a class="btn-outline" href="/admin/panel">Пользователи</a>
+      <a class="btn-outline btn-logout" href="/admin/logout">Выйти</a>
+    </div>
+  </header>
+
+  <main class="panel">
+    <!-- ВАКАНСИИ -->
+    <section class="card glass fade-in">
+      <div class="row between">
+        <div>
+          <div class="h">Управление вакансиями ВУЗа</div>
+          <p class="muted2">
+            Создавай вакансии от ВУЗа — бот будет предлагать их студентам и фиксировать отклики по Telegram ID.
+          </p>
+        </div>
+      </div>
+
+      <form id="vacForm" class="vacForm" autocomplete="off">
+        <input class="inp" id="vacTitle" placeholder="Название вакансии (например: «Стажёр QA в учебный проект»)" required>
+
+        <input class="inp" id="vacExp" placeholder="Опыт (например: «без опыта», «1–3 года»)">
+
+        <input class="inp" id="vacSpec" placeholder="Специализация (например: «Программная инженерия»)" required>
+
+        <div class="tagsBox" id="tagsBox">
+          <div class="tagsHeader">
+            <div class="tagsTitle">Теги</div>
+            <div class="tagsHint">Enter — добавить, Backspace — удалить последний</div>
+          </div>
+
+          <div class="tagsRow" id="tagsRow">
+            <input class="tagsInput" id="tagInput" placeholder="Например: «Python», «QA», «Стажировка», «Web»">
+          </div>
+        </div>
+
+        <button class="btn small" type="submit">Добавить</button>
+
+        <textarea class="inp ta" id="vacDesc" placeholder="Описание вакансии (обязанности, требования, условия)"></textarea>
+      </form>
+
+      <div class="row between vacTools">
+        <input class="inp" id="vacSearch" placeholder="Поиск по названию / описанию / опыту / специализации / тегам…">
+        <button class="btn-outline" id="vacRefresh" type="button">Обновить</button>
+      </div>
+
+      <div class="table-wrap">
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th class="col-id">ID</th>
+              <th>вакансия</th>
+              <th class="col-spec">специализация</th>
+              <th class="col-exp">опыт</th>
+              <th class="col-tags">теги</th>
+              <th class="col-count">отклики</th>
+              <th class="col-actions">действие</th>
+            </tr>
+          </thead>
+          <tbody id="vacBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card glass fade-in delay-1">
+      <div class="row between">
+        <div>
+          <div class="h">Откликнувшиеся</div>
+          <div class="subline" id="selectedVacLine">Выбери вакансию в таблице сверху</div>
+        </div>
+
+        <div class="row">
+          <input class="inp" id="appSearch" placeholder="Поиск по tg id / ФИО / группе / специализации…">
+          <button class="btn-outline" id="appsRefresh" type="button" disabled>Обновить</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th class="col-id">telegram_id</th>
+              <th>имя</th>
+              <th>фамилия</th>
+              <th class="col-exp">группа</th>
+              <th class="col-spec">специализация</th>
+              <th class="col-exp">дата отклика</th>
+            </tr>
+          </thead>
+          <tbody id="appsBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="vacModal" aria-hidden="true">
+    <div class="modalBackdrop" id="modalBackdrop"></div>
+    <div class="modalCard glass" role="dialog" aria-modal="true">
+      <div class="modalHead">
+        <div class="modalTitle" id="modalTitle">Вакансия</div>
+        <button class="modalClose btn-outline" type="button" id="modalClose">Закрыть</button>
+      </div>
+      <div class="modalMeta" id="modalMeta"></div>
+      <div class="modalBody" id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>window.ADMIN_BOOT = true;</script>
+  <script src="{{ url_for('static', filename='admin_vacancies.js') }}"></script>
+</body>
+</html>

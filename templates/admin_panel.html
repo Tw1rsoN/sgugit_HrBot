@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>СГУГиТ HR — Панель</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body class="bg">
+  <div class="bg-blobs">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <header class="top glass">
+    <div class="left">
+      <div class="title">СГУГиТ HR</div>
+      <div class="subtitle">Панель администратора</div>
+    </div>
+
+    <div class="right">
+      <div class="stats">
+        <div class="stat">
+          <div class="k">Всего</div>
+          <div class="v" id="stTotal">—</div>
+        </div>
+        <div class="stat">
+          <div class="k">Доступ</div>
+          <div class="v" id="stAllowed">—</div>
+        </div>
+        <div class="stat">
+          <div class="k">Запросы</div>
+          <div class="v" id="stReq">—</div>
+        </div>
+      </div>
+
+
+      <a class="btn-outline" href="/admin/vacancies">Вакансии</a>
+
+      <a class="btn-outline btn-logout" href="/admin/logout">Выйти</a>
+    </div>
+  </header>
+
+  <main class="panel">
+    <section class="card glass fade-in delay-1">
+      <div class="row between">
+        <div class="h">Пользователи</div>
+        <div class="actions">
+          <input class="inp" id="search" placeholder="Поиск по Telegram ID, ФИО, группе, специализации…">
+          <button class="btn-outline" id="refresh" type="button">Обновить</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="tbl">
+          <thead>
+          <tr>
+            <th>telegram_id</th>
+            <th>имя</th>
+            <th>фамилия</th>
+            <th>группа</th>
+            <th>специализация</th>
+            <th>доступ</th>
+            <th>запрос</th>
+            <th>hh</th>
+            <th>действие</th>
+          </tr>
+          </thead>
+          <tbody id="usersBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="{{ url_for('static', filename='admin.js') }}"></script>
+  <script>window.ADMIN_BOOT = true;</script>
+</body>
+</html>

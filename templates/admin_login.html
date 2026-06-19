@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>СГУГиТ HR — Вход</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body class="bg">
+
+  <div class="bg-blobs">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <div class="shell">
+    <section class="card glass fade-in">
+      <div class="brand-row">
+        <div class="badge">HR</div>
+        <div>
+          <div class="title">СГУГиТ HR</div>
+          <div class="subtitle">Отклики на вакансии hh.ru от ВУЗа — под контролем администратора</div>
+        </div>
+      </div>
+
+      <ul class="bullets">
+        <li><span></span><div>Выдавайте доступ студентам и сотрудникам в пару кликов</div></li>
+        <li><span></span><div>Заявки с ФИО, группой и специализацией — без лишней переписки</div></li>
+        <li><span></span><div>Единая панель управления: доступ и привязка hh</div></li>
+      </ul>
+    </section>
+
+    <section class="card glass fade-in">
+      <div class="h">Вход администратора</div>
+
+      {% if error %}
+        <div class="alert">{{ error }}</div>
+      {% endif %}
+
+      <form class="form" method="post" action="/admin">
+        <label for="login">Логин</label>
+        <input id="login" name="login" type="text" placeholder="Введите логин" autocomplete="username" required>
+
+        <label for="password">Пароль</label>
+        <input id="password" name="password" type="password" placeholder="Введите пароль" autocomplete="current-password" required>
+
+        <button class="btn" type="submit">
+          <span class="btn-shine"></span>
+          Войти
+        </button>
+      </form>
+    </section>
+  </div>
+
+</body>
+</html>

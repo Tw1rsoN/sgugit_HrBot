@@ -1,0 +1,272 @@
+
+.muted2{
+  margin: 8px 0 0;
+  color: rgba(234,240,255,.70);
+  font-size: 13px;
+  line-height: 1.45;
+  max-width: 920px;
+}
+
+.subline{
+  margin-top: 6px;
+  color: rgba(234,240,255,.65);
+  font-size: 13px;
+}
+
+.row{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+  flex-wrap: wrap;
+}
+
+.vacForm{
+  display: grid;
+  grid-template-columns: 1.35fr 1fr 1.15fr 1.7fr auto;
+  grid-template-areas:
+    "title exp spec tags btn"
+    "desc  desc desc tags btn";
+  gap: 10px;
+  margin-top: 14px;
+  align-items: start;
+}
+
+#vacTitle{ grid-area: title; }
+#vacExp{ grid-area: exp; }
+#vacSpec{ grid-area: spec; }
+#tagsBox{ grid-area: tags; }
+#vacDesc{ grid-area: desc; }
+#vacForm button{ grid-area: btn; align-self: start; }
+
+.ta{
+  min-height: 96px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  resize: vertical;
+  line-height: 1.35;
+}
+
+.vacTools{
+  margin-top: 12px;
+  gap: 10px;
+}
+
+#vacSearch{
+  min-width: 520px;
+}
+
+.tbl td .btn-outline{
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 12px;
+  font-weight: 900;
+}
+
+.tbl td .btn-outline + .btn-outline{
+  margin-left: 8px;
+}
+
+.col-id{ width: 96px; }
+.col-spec{ width: 240px; }
+.col-exp{ width: 180px; }
+.col-tags{ width: 240px; }
+.col-count{ width: 120px; }
+.col-actions{ width: 220px; }
+
+.badgeMini{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: .2px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.06);
+  white-space: nowrap;
+}
+.badgeMini.blue{
+  border-color: rgba(91,140,255,.35);
+  background: rgba(91,140,255,.12);
+}
+
+.tagsBox{
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(8,12,24,.45);
+  border-radius: 14px;
+  padding: 10px 10px 8px;
+  min-height: 140px;
+}
+
+.tagsHeader{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.tagsTitle{
+  font-weight: 900;
+  font-size: 12px;
+  color: rgba(234,240,255,.92);
+}
+
+.tagsHint{
+  font-size: 11px;
+  color: rgba(234,240,255,.55);
+}
+
+.tagsRow{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items:center;
+}
+
+.tagChip{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  font-weight: 900;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.tagChip button{
+  border:0;
+  background: transparent;
+  color: rgba(234,240,255,.75);
+  cursor:pointer;
+  font-weight: 900;
+  padding: 0;
+  line-height: 1;
+}
+.tagChip button:hover{
+  color: rgba(234,240,255,.95);
+}
+
+.tagsInput{
+  flex: 1 1 180px;
+  min-width: 180px;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 12px;
+  border: 1px dashed rgba(255,255,255,.16);
+  background: rgba(8,12,24,.20);
+  color: rgba(234,240,255,.92);
+  outline:none;
+}
+
+.tagsInput:focus{
+  border-color: rgba(91,140,255,.45);
+  box-shadow: 0 0 0 4px rgba(91,140,255,.10);
+}
+
+.tagsInline{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tagsInline .tagPill{
+  display:inline-flex;
+  align-items:center;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.05);
+  font-weight: 900;
+  font-size: 11px;
+  color: rgba(234,240,255,.88);
+  white-space: nowrap;
+}
+
+.linkBtn{
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  font-weight: 900;
+  color: rgba(234,240,255,.92);
+  border-bottom: 1px dashed rgba(234,240,255,.35);
+}
+.linkBtn:hover{
+  border-bottom-color: rgba(234,240,255,.70);
+}
+
+/* ===== modal ===== */
+.modal{
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 1000;
+}
+.modal.show{
+  display: block;
+}
+.modalBackdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(8px);
+}
+.modalCard{
+  position: relative;
+  width: min(860px, calc(100% - 28px));
+  margin: 64px auto;
+  padding: 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: 0 20px 70px rgba(0,0,0,.45);
+}
+.modalHead{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.modalTitle{
+  font-size: 18px;
+  font-weight: 900;
+  color: rgba(234,240,255,.96);
+}
+.modalMeta{
+  color: rgba(234,240,255,.70);
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+.modalBody{
+  white-space: pre-wrap;
+  color: rgba(234,240,255,.92);
+  line-height: 1.45;
+  font-size: 13px;
+  max-height: 60vh;
+  overflow: auto;
+  padding-right: 6px;
+}
+
+@media (max-width: 1200px){
+  .vacForm{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "exp"
+      "spec"
+      "tags"
+      "desc"
+      "btn";
+  }
+  #vacSearch{
+    min-width: 240px;
+    width: 100%;
+  }
+}

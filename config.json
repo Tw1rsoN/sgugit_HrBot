@@ -1,0 +1,6 @@
+{
+  "urls": {
+    "base": "https://hh.ru/search/vacancy",
+    "login": "https://hh.ru/account/login"
+  }
+}
